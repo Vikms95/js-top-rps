@@ -1,3 +1,5 @@
+
+// line 35 lane gets broken when div is out of scope
 function computerSelection()
 {
     const options = ["Rock","Paper","Scissors"];
@@ -21,6 +23,7 @@ function playRound(computer,player)
     if(computer == player)
     {
         console.log("It's a draw!")
+        // console.log("It's a draw!")  console.log("It's a draw!")  console.log("It's a draw!")  console.log("It's a draw!")
        
     }else if(player == "paper")
     {
@@ -58,13 +61,11 @@ function playRound(computer,player)
     }
 }
 
-function gameFlow()
-{
+function gameFlow(){
     let playerCount = 0;
     let computerCount = 0;
 
-    while(playerCount < 5 || computerCount < 5)
-    {
+    while(playerCount < 5 && computerCount < 5){
         let result = playRound(computerSelection(),playerSelection())
         console.log(result)
         if(result == "computer")
@@ -79,23 +80,15 @@ function gameFlow()
         {
             alert("It's a draw")
         }
-        else
-        {
-            break;
-        }
-
     }
 
-    if(playerCount == 5)
-    {
+    if(playerCount === 5){
         alert("Player wins!")
     }
-    else if (computerCount == 5)
-    {
+    else if (computerCount === 5){
         alert("Computer wins!")
     }
-    else
-    {
+    else{
         alert("Game is broken")
     }
 }
