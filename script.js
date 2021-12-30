@@ -1,8 +1,6 @@
-//TODO Implement gameFlow() to output winner in the UI
-//Make the game work only if the click event is on "rock,paper,scissors"
+//TODO 
 //Improve UI
-//  Show score while playing
-//  Add epic sound effects
+//Add epic sound effects
 
 function computerSelection()
 {
@@ -13,6 +11,7 @@ function computerSelection()
     return chosenComputerOptionCase;
 }
 
+//Only for console version of RPS
 function playerSelection()
 {
     const chosenPlayerOption = prompt("Choose one: rock / paper / scissors")
@@ -44,39 +43,30 @@ function displayOutputRound(computerSelection,playerSelection,roundWinner)
    }
 }
 
-function displayOutputGame(gameWinner)
+function displayOutputGame(gameWinner,divPlayerReference,divComputerReference)
 {
     const divReference = document.querySelector('div.output');
     const gameWinnerUp = capitalize(gameWinner);
     
-    if(gameWinner === "computer" && gameWinner === "player"){
-        divReference.textContent = `${gameWinnerUp} wins!`;
+    if(gameWinner === "computer" || gameWinner === "player"){
+        divReference.textContent = `${gameWinnerUp} wins the duel!`;
+        divPlayerReference.textContent = 0;
+        divComputerReference.textContent = 0;
     }
     else
     {
-        divReference.textContent = `It's a draw!`;
+        divReference.textContent = `Game is broken!`;
     }
 }
 
-function displayScoreGame(playerCount,computerCount)
-{
-    const divPlayerReference = document.querySelector('div.player-score');
-    const divComputerReference = document.querySelector('div.computer-score');
-
-    divPlayerReference.textContent = playerCount;
-    divComputerReference.textContent = computerCount;
-}
-
-function addScore(roundWinner)
+function addScore(roundWinner,divPlayerReference,divComputerReference)
 {   
     if(roundWinner == "player")
     {
-        let divPlayerReference = document.querySelector('div.player-score');
         divPlayerReference.textContent++;
     }
     else if(roundWinner == "computer")
     {   
-        let divComputerReference = document.querySelector('div.computer-score');
         divComputerReference.textContent++;
     }
     else
@@ -145,20 +135,26 @@ function choseRoundWinner(computerSelection,playerSelection,roundWinner)
     }
 }
 
-function choseGameWinner(gameWinner)
+function playRound(computerSelection,event)
 {   
-    const divPlayerReference = document.querySelector('div.player-score');
-    const divComputerReference = document.querySelector('div.computer-score');
+    let playerSelection = event.target.className;
+    let divPlayerReference = document.querySelector('div.player-score');
+    let divComputerReference = document.querySelector('div.computer-score');
+    let roundWinner;
+    let gameWinner;
 
-    if( divPlayerReference.textContent === 5)
-    {
+    roundWinner = choseRoundWinner(computerSelection,playerSelection,roundWinner)
+    addScore(roundWinner,divPlayerReference,divComputerReference)
+
+    if(divPlayerReference.textContent == 5)
+    {   
         gameWinner = "player";
-        displayOutputGame(gameWinner);
+        displayOutputGame(gameWinner,divPlayerReference,divComputerReference)
     }
-    else if(divComputerReference.textContent === 5)
+    else if(divComputerReference.textContent == 5)
     {
         gameWinner = "computer";
-        displayOutputGame(gameWinner);
+        displayOutputGame(gameWinner,divPlayerReference,divComputerReference);
     }
     else
     {
@@ -166,22 +162,12 @@ function choseGameWinner(gameWinner)
     }
 }
 
-function playRound(computerSelection,event)
-{   
-    let playerSelection = event.target.className;
-    let roundWinner;
-    let gameWinner;
-
-    roundWinner = choseRoundWinner(computerSelection,playerSelection,roundWinner)
-    addScore(roundWinner)
-    choseGameWinner(gameWinner)
-
-}
-
 window.addEventListener('click', function(e) 
 {
-    if(!e.target.className) return;
+    if(!(e.target.className === "rock"
+        || e.target.className === "paper" 
+        || e.target.className === "scissors")) return;
+        
     playRound(computerSelection(),e)
-
 });
 

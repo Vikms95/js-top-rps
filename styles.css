@@ -1,13 +1,27 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	}
+
+html {
+	background-color: red;
+	background-image: url(https://upload.wikimedia.org/wikipedia/commons/6/64/Creaci%C3%B3n_de_Ad%C3%A1n_%28Miguel_%C3%81ngel%29.jpg);
+	background-size: 100% auto;
+	background-position: top center;
+	background-attachment: fixed;
+	}
 body{
     padding: 50px;
+    
+	background-image: linear-gradient(hsl(10,90,66), transparent 80%);
+    mix-blend-mode: color-burn;
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
-    
     gap: 30px;
-
-    
 }
+
 
 button{
     padding: 20px;
@@ -15,16 +29,24 @@ button{
     display: flex;
     cursor:pointer;
     transition: 300ms;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Cinzel', serif;
     font-style: oblique;
     font-size: 50px;
+    font-weight: 500px;
+    -webkit-tap-highlight-color: transparent;
 
     display: flex;
     justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 0;
+    transition: 1s;
 }
+
 
 button:hover{
     transform: scale(1.05);
+    background: rgb(255, 2, 2);
 }
 
 .output{
@@ -40,11 +62,21 @@ button:hover{
 }
 
 div.header{
+    color: #fffdfd;
+    background: #f50f0f;
+    border: solid black; 
+    font-size: 20px; 
+    line-height: 40px;
+    font-weight: 400;
+    padding: 10px; 
+    font-family: 'Libre Baskerville', serif; 
+
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
 }
+
 div.score{
     display: flex;
     flex-flow: row wrap;
@@ -54,7 +86,12 @@ div.score{
 
 .computer-score,
 .player-score{
+    
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 50px;
+    
     display: flex;
     justify-content: center;
     align-items: center;
+
 }

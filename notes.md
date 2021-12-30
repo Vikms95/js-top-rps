@@ -7,5 +7,5 @@ Game logic
     -choseRoundWinner() executes, displays the roundWinner
      output and returns roundWinner as a String
     -addScore() executes, takes choseRoundWinner(),playerCount,computerCount
-     and adds ++ to the div where the score is located directly (?)
+     and adds ++ to the div where the score is located directly 
 
