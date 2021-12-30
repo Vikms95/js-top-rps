@@ -1,3 +1,8 @@
+//TODO Implement gameFlow() to output winner in the UI
+//Improve UI
+//  Show score while playing
+//  Add epic sound effects
+
 function computerSelection()
 {
     const options = ["Rock","Paper","Scissors"];
@@ -14,20 +19,42 @@ function playerSelection()
     return chosenPlayerOptionCase;
 }
 
-function displayOutput(computerSelection,playerSelection,roundWinner){
+function capitalize(s)
+{
+    return s[0].toUpperCase() + s.slice(1);
+}
+
+function displayOutputRound(computerSelection,playerSelection,roundWinner)
+{
    const divReference = document.querySelector('div');
+   const computerSelectionUp = capitalize(computerSelection);
+   const playerSelectionUp = capitalize(playerSelection);
    
    if(roundWinner === "computer"){
-        divReference.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
+        divReference.textContent = `You lose! ${computerSelectionUp} beats ${playerSelectionUp}`;
    }
    else if(roundWinner === "player")
    {
-    divReference.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
+    divReference.textContent = `You win! ${playerSelectionUp} beats ${computerSelectionUp}`;
    }
    else
    {
     divReference.textContent = `It's a draw!`;
    }
+}
+
+function displayOutputGame(gameWinner)
+{
+    const divReference = document.querySelector('div');
+    const gameWinnerUp = capitalize(gameWinner);
+    
+    if(gameWinner === "computer" && gameWinner === "player"){
+        divReference.textContent = `${gameWinnerUp} wins!`;
+    }
+    else
+    {
+        divReference.textContent = `It's a draw!`;
+    }
 }
 
 function playRound(computerSelection,event)
@@ -37,19 +64,19 @@ function playRound(computerSelection,event)
 
     if(computerSelection == playerSelection)
     {
-        displayOutput(computerSelection,playerSelection,roundWinner)
+        displayOutputRound(computerSelection,playerSelection,roundWinner)
        
     }else if(playerSelection == "paper")
     {
         if(computerSelection == "scissors")
         {   
             roundWinner = "computer";
-            displayOutput(computerSelection,playerSelection,roundWinner)
+            displayOutputRound(computerSelection,playerSelection,roundWinner)
             return roundWinner;
         }else
         {   
             roundWinner = "player";
-            displayOutput(computerSelection,playerSelection,roundWinner)
+            displayOutputRound(computerSelection,playerSelection,roundWinner)
             return roundWinner;
         }
     }else if(playerSelection == "rock")
@@ -57,12 +84,12 @@ function playRound(computerSelection,event)
         if(computerSelection == "paper")
         {   
             roundWinner = "computer";
-            displayOutput(computerSelection,playerSelection,roundWinner)
+            displayOutputRound(computerSelection,playerSelection,roundWinner)
             return roundWinner;
         }else
         {   
             roundWinner = "player";
-            displayOutput(computerSelection,playerSelection,roundWinner)
+            displayOutputRound(computerSelection,playerSelection,roundWinner)
             return roundWinner;
         }
     }else
@@ -70,24 +97,27 @@ function playRound(computerSelection,event)
         if(computerSelection == "rock")
         {   
             roundWinner = "computer";
-            displayOutput(computerSelection,playerSelection,roundWinner)
+            displayOutputRound(computerSelection,playerSelection,roundWinner)
             return roundWinner;
         }else
         {   
             roundWinner = "player";
-            displayOutput(computerSelection,playerSelection,roundWinner)
+            displayOutputRound(computerSelection,playerSelection,roundWinner)
             return roundWinner;
         }
     }
 }
 
-function gameFlow(){
+/*Logic for gameFlow:
+
+*/
+function gameFlow(playRound)
+{
     let playerCount = 0;
     let computerCount = 0;
 
-    while(playerCount < 5 && computerCount < 5){
-        let result = playRound(computerSelection(),playerSelection())
-        console.log(result)
+    while(playerCount < 5 && computerCount < 5)
+    {
         if(result == "computer")
         {
             computerCount++;
@@ -98,14 +128,16 @@ function gameFlow(){
         }
         else if(result == "It's a draw!")
         {
-            alert("It's a draw")
+            alert("It's a draw");
         }
     }
 
-    if(playerCount === 5){
+    if(playerCount === 5)
+    {
         alert("Player wins!")
     }
-    else if (computerCount === 5){
+    else if (computerCount === 5)
+    {
         alert("Computer wins!")
     }
     else{
@@ -115,5 +147,5 @@ function gameFlow(){
 
 window.addEventListener('click', function(e) {
     if(!e.target.className) return;
-    playRound(computerSelection(),e)
+    gameFlow(playRound(computerSelection(),e))
 });
