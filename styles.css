@@ -14,11 +14,17 @@ button{
     border: solid 5px;
     display: flex;
     cursor:pointer;
+    transition: 300ms;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-style: oblique;
     font-size: 50px;
+
     display: flex;
     justify-content: center;
+}
+
+button:hover{
+    transform: scale(1.05);
 }
 
 .output{
@@ -29,6 +35,26 @@ button{
 
     display: flex;
     flex-direction: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+div.header{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+div.score{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.computer-score,
+.player-score{
+    display: flex;
     justify-content: center;
     align-items: center;
 }
