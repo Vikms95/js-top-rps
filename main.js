@@ -1,13 +1,11 @@
-
-// line 35 lane gets broken when div is out of scope
 function computerSelection()
 {
     const options = ["Rock","Paper","Scissors"];
     let chosenComputerNumber = Math.floor(Math.random() *options.length);
-    let chosenComputerOption = options[chosenComputerNumber]
+    let chosenComputerOption = options[chosenComputerNumber];
     const chosenComputerOptionCase = chosenComputerOption.toLowerCase();
-    console.log(chosenComputerOptionCase)
-    return chosenComputerOptionCase
+    console.log(chosenComputerOptionCase);
+    return chosenComputerOptionCase;
 }
 
 function playerSelection()
@@ -18,79 +16,82 @@ function playerSelection()
     return chosenPlayerOptionCase
 }
 
-function playRound(computer,player)
-{
-    if(computer == player)
+function playRound(computerSelection,event)
+{   
+    const playerSelection = event.target.className
+    if(computerSelection == playerSelection)
     {
-        console.log("It's a draw!")
-        // console.log("It's a draw!")  console.log("It's a draw!")  console.log("It's a draw!")  console.log("It's a draw!")
+        alert("It's a draw!")
        
-    }else if(player == "paper")
+    }else if(playerSelection == "paper")
     {
-        if(computer == "scissors")
+        if(computerSelection == "scissors")
         {
-            console.log("You lose! Scissors beats Paper!")
+            alert("You lose! Scissors beats Paper!")
             return "computer";
         }else
         {
-            console.log("You win! Paper beats Rock!")
+            alert("You win! Paper beats Rock!")
             return "player";
         }
-    }else if(player == "rock")
+    }else if(playerSelection == "rock")
     {
-        if(computer == "paper")
+        if(computerSelection == "paper")
         {
-            console.log("You lose! Paper beats Rock!") 
+            alert("You lose! Paper beats Rock!") 
             return "computer";
         }else
         {
-            console.log("You win ! Rock beats Scissors!")
+            alert("You win ! Rock beats Scissors!")
             return "player";
         }
     }else
     {
-        if(computer == "rock")
+        if(computerSelection == "rock")
         {
-            console.log("You lose! Rock beats Scissors!")
+            alert("You lose! Rock beats Scissors!")
             return "computer";
         }else
         {
-            console.log("You win! Scissors beat Paper!")
+            alert("You win! Scissors beat Paper!")
             return "player";
         }
     }
 }
 
-function gameFlow(){
-    let playerCount = 0;
-    let computerCount = 0;
+// function gameFlow(){
+//     let playerCount = 0;
+//     let computerCount = 0;
 
-    while(playerCount < 5 && computerCount < 5){
-        let result = playRound(computerSelection(),playerSelection())
-        console.log(result)
-        if(result == "computer")
-        {
-            computerCount++;
+//     while(playerCount < 5 && computerCount < 5){
+//         let result = playRound(computerSelection(),playerSelection())
+//         console.log(result)
+//         if(result == "computer")
+//         {
+//             computerCount++;
 
-        }else if(result == "player")
-        {
-            playerCount++;
-        }
-        else if(result == "It's a draw!")
-        {
-            alert("It's a draw")
-        }
-    }
+//         }else if(result == "player")
+//         {
+//             playerCount++;
+//         }
+//         else if(result == "It's a draw!")
+//         {
+//             alert("It's a draw")
+//         }
+//     }
 
-    if(playerCount === 5){
-        alert("Player wins!")
-    }
-    else if (computerCount === 5){
-        alert("Computer wins!")
-    }
-    else{
-        alert("Game is broken")
-    }
-}
+//     if(playerCount === 5){
+//         alert("Player wins!")
+//     }
+//     else if (computerCount === 5){
+//         alert("Computer wins!")
+//     }
+//     else{
+//         alert("Game is broken")
+//     }
+// }
 
-gameFlow()
+window.addEventListener('click', function(e) {
+    if(!e.target.className) return;
+    playRound(computerSelection,e)
+});
