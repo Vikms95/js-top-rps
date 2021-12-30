@@ -4,7 +4,6 @@ function computerSelection()
     let chosenComputerNumber = Math.floor(Math.random() *options.length);
     let chosenComputerOption = options[chosenComputerNumber];
     const chosenComputerOptionCase = chosenComputerOption.toLowerCase();
-    console.log(chosenComputerOptionCase);
     return chosenComputerOptionCase;
 }
 
@@ -12,86 +11,109 @@ function playerSelection()
 {
     const chosenPlayerOption = prompt("Choose one: rock / paper / scissors")
     const chosenPlayerOptionCase = chosenPlayerOption.toLowerCase();
-    console.log(chosenPlayerOptionCase)
-    return chosenPlayerOptionCase
+    return chosenPlayerOptionCase;
+}
+
+function displayOutput(computerSelection,playerSelection,roundWinner){
+   const divReference = document.querySelector('div');
+   
+   if(roundWinner === "computer"){
+        divReference.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
+   }
+   else if(roundWinner === "player")
+   {
+    divReference.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
+   }
+   else
+   {
+    divReference.textContent = `It's a draw!`;
+   }
 }
 
 function playRound(computerSelection,event)
 {   
-    const playerSelection = event.target.className
+    const playerSelection = event.target.className;
+    let roundWinner;
+
     if(computerSelection == playerSelection)
     {
-        alert("It's a draw!")
+        displayOutput(computerSelection,playerSelection,roundWinner)
        
     }else if(playerSelection == "paper")
     {
         if(computerSelection == "scissors")
-        {
-            alert("You lose! Scissors beats Paper!")
-            return "computer";
+        {   
+            roundWinner = "computer";
+            displayOutput(computerSelection,playerSelection,roundWinner)
+            return roundWinner;
         }else
-        {
-            alert("You win! Paper beats Rock!")
-            return "player";
+        {   
+            roundWinner = "player";
+            displayOutput(computerSelection,playerSelection,roundWinner)
+            return roundWinner;
         }
     }else if(playerSelection == "rock")
     {
         if(computerSelection == "paper")
-        {
-            alert("You lose! Paper beats Rock!") 
-            return "computer";
+        {   
+            roundWinner = "computer";
+            displayOutput(computerSelection,playerSelection,roundWinner)
+            return roundWinner;
         }else
-        {
-            alert("You win ! Rock beats Scissors!")
-            return "player";
+        {   
+            roundWinner = "player";
+            displayOutput(computerSelection,playerSelection,roundWinner)
+            return roundWinner;
         }
     }else
     {
         if(computerSelection == "rock")
-        {
-            alert("You lose! Rock beats Scissors!")
-            return "computer";
+        {   
+            roundWinner = "computer";
+            displayOutput(computerSelection,playerSelection,roundWinner)
+            return roundWinner;
         }else
-        {
-            alert("You win! Scissors beat Paper!")
-            return "player";
+        {   
+            roundWinner = "player";
+            displayOutput(computerSelection,playerSelection,roundWinner)
+            return roundWinner;
         }
     }
 }
 
-// function gameFlow(){
-//     let playerCount = 0;
-//     let computerCount = 0;
+function gameFlow(){
+    let playerCount = 0;
+    let computerCount = 0;
 
-//     while(playerCount < 5 && computerCount < 5){
-//         let result = playRound(computerSelection(),playerSelection())
-//         console.log(result)
-//         if(result == "computer")
-//         {
-//             computerCount++;
+    while(playerCount < 5 && computerCount < 5){
+        let result = playRound(computerSelection(),playerSelection())
+        console.log(result)
+        if(result == "computer")
+        {
+            computerCount++;
 
-//         }else if(result == "player")
-//         {
-//             playerCount++;
-//         }
-//         else if(result == "It's a draw!")
-//         {
-//             alert("It's a draw")
-//         }
-//     }
+        }else if(result == "player")
+        {
+            playerCount++;
+        }
+        else if(result == "It's a draw!")
+        {
+            alert("It's a draw")
+        }
+    }
 
-//     if(playerCount === 5){
-//         alert("Player wins!")
-//     }
-//     else if (computerCount === 5){
-//         alert("Computer wins!")
-//     }
-//     else{
-//         alert("Game is broken")
-//     }
-// }
+    if(playerCount === 5){
+        alert("Player wins!")
+    }
+    else if (computerCount === 5){
+        alert("Computer wins!")
+    }
+    else{
+        alert("Game is broken")
+    }
+}
 
 window.addEventListener('click', function(e) {
     if(!e.target.className) return;
-    playRound(computerSelection,e)
+    playRound(computerSelection(),e)
 });
