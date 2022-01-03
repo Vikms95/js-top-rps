@@ -4,44 +4,47 @@
 	box-sizing: border-box;
 }
 
-html {
-    height:100vh;
-	background-image: url(https://upload.wikimedia.org/wikipedia/commons/6/64/Creaci%C3%B3n_de_Ad%C3%A1n_%28Miguel_%C3%81ngel%29.jpg);
-	background-size: 100% auto;
-	background-position: top center;
-	background-attachment: fixed;
-}
-
 body{
-    padding: 50px;
-	background-image: linear-gradient(hsl(10,90,66), transparent 10%);
-    
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/6/64/Creaci%C3%B3n_de_Ad%C3%A1n_%28Miguel_%C3%81ngel%29.jpg);
     background-attachment: fixed;
     mix-blend-mode: color-burn;
+    background-size: 100% auto;
+	background-position: top center;
+	background-attachment: fixed;
+    padding: 50px;
+    backdrop-filter: blur(2px);
     
     display: flex;
     flex-flow: column wrap;
-    justify-content: center;
     gap: 30px;
 }
 
-.header-wraper{
-    height: 320px;
-    width: 600px;
-    background:inherit;
-    border-radius: 15px;
-    border: 1px solid rgba(43,43,43,0.568);
+h1{
+    color:rgb(150, 32, 32);   
+}
+
+p{
+    font-weight: bolder;
+}
+
+div.header-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex: 1 0 50px;
+    max-width: 50px;
 }
 
 div.header{
     background: #d3d1d1;
-    border: double #363636; 
+    border-image-width: 100px;
     font-size: 20px; 
     line-height: 40px;
     padding: 10px; 
-    font-family: 'Libre Baskerville', serif; 
+    font-family: 'Kings', cursive;
 
-    display: flex;
+
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
@@ -114,12 +117,17 @@ button:hover{
     border: solid 1px;
     font-style: oblique;
     font-size: 50px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 500px;
     background-color: antiquewhite;
+    opacity: 1;
 
     display: flex;
     flex-direction: row wrap;
     justify-content: center;
     align-items: center;
+    flex:1 0 100px;
+    min-width: 50px;
 }
 
 
