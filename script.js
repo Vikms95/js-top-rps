@@ -1,7 +1,3 @@
-//TODO 
-//Improve UI
-//Add epic sound effects
-
 function computerSelection()
 {
     const options = ["Rock","Paper","Scissors"];
@@ -39,7 +35,7 @@ function displayOutputRound(computerSelection,playerSelection,roundWinner)
    }
    else
    {
-    divReference.textContent = `It's a draw!`;
+    divReference.textContent = `Close battle! It's a draw!`;
    }
 }
 
@@ -167,7 +163,6 @@ window.addEventListener('click', function(e)
     if(!(e.target.className === "rock"
         || e.target.className === "paper" 
         || e.target.className === "scissors")) return;
-        
     playRound(computerSelection(),e)
 });
 

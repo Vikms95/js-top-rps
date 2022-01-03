@@ -7,27 +7,28 @@
     <script src="script.js"> </script>
     <link rel="stylesheet" href="styles.css">
     <title> BATTLE OF TITANS! </title>
-    <audio src="/sounds/background-song.mp3" autoplay="true"></audio>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Kings&family=Pacifico&display=swap" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css2?family=Kings&display=swap" rel="stylesheet">
-
 </head>
-<body>
-    <div class="header-wraper">       
-        <div class="header">
-            <h1> HUMANITY AGAINST DEITIES </h1>
-            <p> CHOOSE YOUR MIGHTY WEAPON. . . </p>
-            <div class="music-player"></div>
-        </div>
-    </div> 
+<body>    
+    <div class="header">
+        <h1> HUMANITY AGAINST DEITIES </h1>
+        <p> CHOOSE YOUR MIGHTY WEAPON. . . </p>
+    </div>
     <div class="score">
         <div class="player-score"> 0 </div>
         <div class="output">Waiting for the duel to start...</div>
         <div class="computer-score"> 0 </div>
     </div>
-    <button class="rock"> I choose my almighty-godlike-demolishing-ROCK !!!</button>
-    <button class="paper">I choose my angelical-sharp-edged-PAPER !!!</button>
-    <button class="scissors">I choose my deadly-lethal-deathbringer-SCISSORS !!!</button>
+        <audio id='rock' src="sounds/rock-sound.wav" preload="auto"></audio>
+        <button class="rock" onclick="document.getElementById('rock').play();"> I choose my almighty-godlike-demolishing-ROCK !!!</button>
+        <audio id='paper' src="sounds/paper-sound.wav" preload="auto"></audio>
+        <button class="paper" onclick="document.getElementById('paper').play();">I choose my angelical-sharp-edged-PAPER !!!</button>
+        <audio id='scissors' src="sounds/scissors-sound.wav" preload="auto"></audio>
+        <button class="scissors" onclick="document.getElementById('scissors').play();">I choose my deadly-lethal-deathbringer-SCISSORS !!!</button>
 </body>
 </html>
